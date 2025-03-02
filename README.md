@@ -2,7 +2,8 @@
 
 ## 📌 Overview
 Admin Hostel Management System is a web-based application designed to streamline hostel administration. It provides functionalities for managing rooms, student records, attendance, complaints, and other administrative tasks efficiently.
-![image][(https://github.com/Rajeshrocky96/Hostel-Management/blob/main/vite-project/src/assets/download.png)](https://github.com/Rajeshrocky96/Hostel-Management/blob/main/vite-project/Photos_Screenshot/AdminPhotos/dashboard.png)
+![Dashboard](https://github.com/Rajeshrocky96/Hostel-Management/blob/main/vite-project/Photos_Screenshot/AdminPhotos/dashboard.png)
+
 
 
 ## 🚀 Features
