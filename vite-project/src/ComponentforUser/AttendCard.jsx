@@ -85,9 +85,7 @@ const AttendCard = ({ id }) => {
       >
         {loading ? (
           <Spin size="large" style={{ display: "block", margin: "20px auto" }} />
-        ) : error ? (
-          <Alert message={error} type="error" showIcon />
-        ) : (
+        ) :  (
           <>
             {/* Donut Chart for Attendance */}
             <Card

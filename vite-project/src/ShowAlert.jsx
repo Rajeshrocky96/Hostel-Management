@@ -13,7 +13,7 @@ const showToastAlert = (message, type = "success") => {
   const toastFn = toastTypes[type] || toastTypes.default;
   toastFn(message, {
     position: "top-right",
-    autoClose: 3000,
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,

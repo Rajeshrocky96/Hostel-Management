@@ -68,6 +68,7 @@ const Login = () => {
         }, 1000);
       }
     } catch (error) {
+      console.log("Login Error:", error.response?.data.message );
 
       showToastAlert(error.response?.data.message, "error");
     }

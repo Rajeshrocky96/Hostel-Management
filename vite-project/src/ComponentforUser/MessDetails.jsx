@@ -31,17 +31,10 @@ const MessDetails = ({ id }) => {
           const totalBill = presentCount * messRate;
 
           setAttendanceSummary({ present: presentCount, absent: data.attendance.length - presentCount, totalBill });
-        } else {
-          setError("No mess or attendance records found.");
-          showToastAlert("error", "No mess or attendance records found.");
-        }
-      } else {
-        setError(data.error || "Error fetching mess details.");
-        showToastAlert("error", data.error || "Error fetching mess details.");
-      }
+        } 
+      } 
     } catch (err) {
-      setError("Error fetching mess details.");
-      showToastAlert("error", "Error fetching mess details.");
+
     } finally {
       setLoading(false);
     }
@@ -63,9 +56,7 @@ const MessDetails = ({ id }) => {
       >
         {loading ? (
           <Spin size="large" style={{ display: "block", margin: "20px auto" }} />
-        ) : error ? (
-          <Alert message={error} type="error" showIcon />
-        ) : (
+        ) :  (
           <Card
             style={{
               background: "linear-gradient(135deg, #ff758c 10%, #ff7eb3 100%)",

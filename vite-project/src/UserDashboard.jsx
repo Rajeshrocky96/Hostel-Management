@@ -40,7 +40,6 @@ import {
 } from "@ant-design/icons";
 import showToastAlert from "./ShowAlert";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { message } from "antd";
 import axios from "axios";
 import dayjs from "dayjs";
@@ -58,6 +57,8 @@ const { Text } = Typography;
 
 const UserDashboard = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [inform, setInform] = useState("");
+  const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false); // Success Modal State
   const [activePage, setActivePage] = useState("dashboard");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisibleForUpdate, setIsModalVisibleForUpdate] = useState(false);
@@ -94,7 +95,7 @@ const UserDashboard = () => {
     checkUserRegistration();
     fetchHostelRegistrations();
     fetchUserData(id);
-  }, [id]);
+  }, [id,isSuccessModalVisible]);
   const [form] = Form.useForm();
   const checkUserRegistration = async () => {
     try {
@@ -111,11 +112,10 @@ const UserDashboard = () => {
       }
     } catch (error) {
       console.error("Error checking registration:", error);
-      message.error("Failed to check registration");
+      // message.error("Failed to check registration");
     }
   };
-  const [inform, setInform] = useState("");
-  const [isSuccessModalVisible, setIsSuccessModalVisible] = useState(false); // Success Modal State
+
 
   const handleFormSubmit = async (values) => {
     console.log("Form values:", values);
@@ -143,7 +143,7 @@ const UserDashboard = () => {
         const errorMessage =
           data.error || "Failed to submit the form. Please try again.";
         setInform(errorMessage); // ✅ Show error message
-      }
+      } 
     } catch (error) {
       console.error("Error submitting form:", error);
       const errorMessage =
@@ -165,12 +165,9 @@ const UserDashboard = () => {
       if (response.ok) {
         setUserRegistered(data); // Update state correctly
         form.setFieldsValue(data);
-      } else {
-        message.error(data.error);
-      }
+      } 
     } catch (error) {
       console.error("Error fetching user data:", error);
-      message.error("Failed to fetch user details");
     }
   };
 
@@ -225,9 +222,7 @@ const UserDashboard = () => {
       if (response.ok) {
         setIsModalVisibleForUpdate(false);
         showToastAlert("Updated Successfully", "success");
-      } else {
-        message.error(data.error);
-      }
+      } 
     } catch (error) {
       console.error("Error updating form:", error);
       showToastAlert("Failed to update details", "error");
@@ -818,13 +813,13 @@ const UserDashboard = () => {
         <Modal
           title={`Hi ${email}, Welcome back!`}
           open={isModalVisibleForForm}
-          onCancel={() => setIsModalVisibleForForm(false)}
+          // onCancel={() => setIsModalVisibleForForm(false)}
           footer={null}
         >
           <Form layout="horizontal" onFinish={handleFormSubmit}>
             <Form.Item
-              label="Name"
-              name="Name"
+              label="Full Name"
+              name="FullName"
               rules={[{ required: true, message: "Please enter full name!" }]}
             >
               <Input placeholder="Enter full name" />
